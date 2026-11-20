@@ -1,0 +1,20 @@
+const { test, expect } = require('@playwright/test');
+
+test('Remove Product', async ({ page }) => {
+
+  await page.goto('https://www.saucedemo.com/');
+
+  await page.fill('#user-name', 'standard_user');
+  await page.fill('#password', 'secret_sauce');
+
+  await page.click('#login-button');
+
+  await page.locator('button').first().click();
+
+  await page.locator('button').first().click();
+
+  await expect(
+      page.locator('.shopping_cart_badge')
+  ).toHaveCount(0);
+
+});
